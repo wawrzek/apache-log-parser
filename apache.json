@@ -1,0 +1,12 @@
+{
+    "log" : [
+        "path": "/var/log/apache2",
+        "file": "access.log"
+            ],
+    "measure": [
+        "status_code" : [
+            "responses": "range(200,206) + range(300,307) + range(400,417) + range(500,505)",
+            "resolution": "day" ]
+        ],
+    "
+}
