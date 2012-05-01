@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 import os.path
 import subprocess 
 from datetime import datetime, timedelta
@@ -18,7 +17,7 @@ selected_type = 'responses'
 
 values = {
 'responses' : range(200,206) + range(300,307) + range(400,417) + range(500,505),
-'requests'  : ['GET', 'POST', 'DELETE'],
+'requests'  : ['GET', 'POST', 'OPTIONS', 'PATCH', 'PUT', 'HEAD', 'CONNECT', 'DELETE', 'TRACE'],
 }
 
 
@@ -39,8 +38,6 @@ else :
     sys.exit(4)
 
 time = datetime.now() - time_step
-print type(time)
-
    
 if t_resolution == 'sec':
     time_string = datetime.strftime(time, '%d/%b/%Y:%H:%M:%S')
