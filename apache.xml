@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <apicredentials apikey="%API_KEY%" secretkey="%SECRET_KEY%"/>
+    <agent name="Apache Agent" interval="60">
+         <monitor name="Apache monitor - number of responses" tag="apache">
+            <exectemplate>/usr/local/monitis/apache-log-parser.py -r "min" -m "requests"</exectemplate>
+            <metric name="Number of responses">
+                <type>integer</type>
+                <uom>Response/min</uom>
+                <regex>\d+:\s+(\d+)</regex>
+            </metric>
+            <metric name="MONITIS_CHECK_TIME">
+                <type>integer</type>
+                <uom>timestamp</uom>
+                <regex>(\d+),:\s+\d+</regex>
+            </metric>
+        </monitor>
+    </agent>
+</config>
