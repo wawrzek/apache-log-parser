@@ -80,10 +80,15 @@ except KeyError:
     print "Please specify values of %s you would like to graph (e.g. set of IPs)"%selected
 
 for line in matches :
-    if line: 
-        code = int((line.group('status_code')))
+    if line:
+        
+        if selected_type == 'requests': 
+            what = 'request'
+            code = line.group(what)
+        elif selected_type == 'responses':
+            what = 'status_code'
+            code = int(line.group(what))
         status[code]= status[code]+1
-
 #print str('%-11s'%'date') + ',' + ','.join([str(r) for r in values[selected_type]))
 print time_output + ',' + ','.join(['%3d'%(status[r]) for r in selected])
 
