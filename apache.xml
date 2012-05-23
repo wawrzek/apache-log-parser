@@ -4,15 +4,20 @@
     <agent name="Apache Agent" interval="60">
          <monitor name="Apache monitor - number of responses" tag="apache">
             <exectemplate>/usr/local/monitis/apache-log-parser.py -r "min" -m "requests"</exectemplate>
-            <metric name="Number of responses">
+            <metric name="Number of 200">
                 <type>integer</type>
                 <uom>Response/min</uom>
-                <regex>\d+:\s+(\d+)</regex>
+                <regex>.{5},\s+(\d+)</regex>
+            </metric>
+            <metric name="Number of 404">
+                <type>integer</type>
+                <uom>Response/min</uom>
+                <regex>.{5},\s+(\d+,){19}\d+</regex>
             </metric>
             <metric name="MONITIS_CHECK_TIME">
                 <type>integer</type>
                 <uom>timestamp</uom>
-                <regex>(\d+),:\s+\d+</regex>
+                <regex>(\d{2}\:\d{2})</regex>
             </metric>
         </monitor>
     </agent>
