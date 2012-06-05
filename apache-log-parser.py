@@ -18,6 +18,7 @@ selected_type = 'responses'
 
 
 values = {
+'response_group': {"type" : "int", "name": "status_code", "elements": range(200,206) + range(300,307) + range(400,417) + range(500,505)},
 'responses' : {"type" : "int", "name": "status_code", "elements": range(200,206) + range(300,307) + range(400,417) + range(500,505)},
 'requests'  : {"type" : "str", "name": "request", "elements": ['GET', 'POST', 'OPTIONS', 'PATCH', 'PUT', 'HEAD', 'CONNECT', 'DELETE', 'TRACE']},
 }
@@ -86,6 +87,14 @@ for line in matches :
     if line:
         code = eval(selected["type"])(line.group(selected["name"]))
         status[code]= status[code]+1
+
+if selected_type == "response_group":
+    groups = []
+    for i in [2,3,4,5]:
+        groups.append(str(sum([l[1] for l in status.iteritems() if str(l[0])[0]==[i]])))
+    print  time_output + ',' + ','.join(groups)
+
+else:
+    print time_output + ',' + ','.join(['%3d'%(status[r]) for r in selected["elements"]])
 #print str('%-11s'%'date') + ',' + ','.join([str(r) for r in values[selected_type]))
-print time_output + ',' + ','.join(['%3d'%(status[r]) for r in selected["elements"]])
 
