@@ -17,7 +17,7 @@
             <metric name="MONITIS_CHECK_TIME">
                 <type>integer</type>
                 <uom>timestamp</uom>
-                <regex>(\d)</regex>
+                <regex>(\d+)</regex>
             </metric>
         </monitor>
     </agent>
