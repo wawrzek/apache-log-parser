@@ -7,12 +7,12 @@
             <metric name="Number of GETs">
                 <type>integer</type>
                 <uom>Requests/min</uom>
-                <regex>.{11},\ *(\d+)</regex>
+                <regex>.{11},\s*(\d+)</regex>
             </metric>
             <metric name="Number of POSTs">
                 <type>integer</type>
                 <uom>Requests/min</uom>
-                <regex>.{11},\ *\d+,\ *(\d+)</regex>
+                <regex>.{11},\s*\d+,\s*(\d+)</regex>
             </metric>
             <metric name="MONITIS_CHECK_TIME">
                 <type>integer</type>

@@ -2,17 +2,17 @@
 <config>
     <apicredentials apikey="%API_KEY%" secretkey="%SECRET_KEY%"/>
     <agent name="Apache Agent" interval="60">
-         <monitor name="Apache monitor - Response groups" tag="apache">
+         <monitor name="Apache monitor - HTTP Response groups" tag="apache">
             <exectemplate>/usr/local/monitis/apache-log-parser.py -r "min" -m "response_group"</exectemplate>
             <metric name="Number of 2XX">
                 <type>integer</type>
                 <uom>Response/min</uom>
-                <regex>.{5},\s+(\d+)</regex>
+                <regex>.{11},\s*(\d+)</regex>
             </metric>
             <metric name="Number of 4XX">
                 <type>integer</type>
                 <uom>Response/min</uom>
-                <regex>.{5},\s+\d+,\d+(\d+)</regex>
+                <regex>.{11},\s*\d+,\s*(\d+)</regex>
             </metric>
             <metric name="MONITIS_CHECK_TIME">
                 <type>integer</type>
