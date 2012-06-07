@@ -2,8 +2,8 @@
 <config>
     <apicredentials apikey="%API_KEY%" secretkey="%SECRET_KEY%"/>
     <agent name="Apache Agent" interval="60">
-         <monitor name="Apache monitor - number of responses" tag="apache">
-            <exectemplate>/usr/local/monitis/apache-log-parser.py -r "min" -m "requests"</exectemplate>
+         <monitor name="Apache monitor - Response groups" tag="apache">
+            <exectemplate>/usr/local/monitis/apache-log-parser.py -r "min" -m "response_group"</exectemplate>
             <metric name="Number of 2XX">
                 <type>integer</type>
                 <uom>Response/min</uom>
