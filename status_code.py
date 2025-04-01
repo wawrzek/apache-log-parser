@@ -85,7 +85,7 @@ else:
 
 values=[]
 
-print ("{},{}".format("date".rjust(str_end-4), ",".join([str(r) for r in responses])))
+print ("{},{}".format("date".rjust(str_end), ",".join([str(r) for r in responses])))
 
 time_value = _get_time_value(response_log, apache_log)
 
@@ -97,10 +97,11 @@ while time_value <= time_end:
         print ("Wrong time resolution")
         sys.exit(4)
 
-    log_re = line_log%(time_string).format(time_string)
+    log_re = line_log%(time_string)
     search = re.compile(log_re).search
 
-    matches = (search(line) for line in file(apache_log))
+    with open(apache_log) as log_file:
+        matches = [search(line) for line in log_file]
 
     for line in matches:
         if line:
