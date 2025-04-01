@@ -6,7 +6,6 @@ import re
 import subprocess
 import sys
 from time import mktime
-from typing_extensions import _T_co
 
 
 def _range(r1,r2):
@@ -27,7 +26,7 @@ def _get_time_value(response_log, apache_log):
     try:
         with open(response_log, 'r') as f:
             return int(f.readline().split(',')[0])
-    except ValueError:
+    except (ValueError, FileNotFoundError):
         try:
             with open(apache_log, 'r') as f:
                 return int(mktime(datetime.strptime(f.readline().split()[3][1:], '%d/%b/%Y:%H:%M:%S').timetuple()))
@@ -86,7 +85,7 @@ else:
 
 values=[]
 
-print ("{},{}".format("date".rjust(str_end-4), ",".join([str(r) for r in responses]))
+print ("{},{}".format("date".rjust(str_end-4), ",".join([str(r) for r in responses])))
 
 time_value = _get_time_value(response_log, apache_log)
 
