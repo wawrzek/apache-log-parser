@@ -64,11 +64,11 @@ def _get_time_value(response_log, apache_log):
 
 def main():
     parser = argparse.ArgumentParser(description="Script to print HTML response codes from Apache logs")
-    parser.add_argument("-d", "--directory", type=str, default="/var/log/apache2")
-    parser.add_argument("-f", "--file", type=str, default="apache.log")
-    parser.add_argument("-rd", "--response_directory", type=str, default=".")
-    parser.add_argument("-rf", "--response_file", type=str, default="response.log")
-    parser.add_argument("-p", "--period", type=str, default="hour")
+    parser.add_argument("-d", "--directory", type=str, default="/var/log/apache2", help="Directory with apache log")
+    parser.add_argument("-f", "--file", type=str, default="access.log", help="Apache log file name")
+    parser.add_argument("-rd", "--response_directory", type=str, default=".", help="Location of the response directory")
+    parser.add_argument("-rf", "--response_file", type=str, default="response.log", help="The filename for the response log")
+    parser.add_argument("-p", "--period", type=str, default="hour", help="Period to aggregate data into")
 
     args = parser.parse_args()
 
