@@ -47,25 +47,25 @@ periods = {
         "end": 19,
         "format_start": "%d/%b/%Y:%H:%M:%S",
         "format": "%d/%b/%Y:%H:%M:%S",
-    }
+    },
     "min": {
         "step": 60,
         "end": 19,
         "format_start": "%d/%b/%Y:%H:%M:00",
         "format": "%d/%b/%Y:%H:%M:.{2}",
-    }
+    },
     "hour": {
         "step": 60 * 60,
         "end": 14,
         "format_start": "%d/%b/%Y:%H:00:00",
         "format": "%d/%b/%Y:%H:.{2}:.{2}",
-    }
+    },
     "day": {
         "step": 60 * 60 * 24,
         "end": 11,
         "format_start": "%d/%b/%Y:00:00:00",
         "format": "%d/%b/%Y:.{2}:.{2}:.{2}",
-    }
+    },
 }
 
 line_log = '(?P<ip>[.:0-9a-fA-F]+) - - \[%s.{0,6}\] "GET (?P<uri>.*?) HTTP/1.\d" (?P<status_code>\d+) \d+ "(?P<referral>.*?)" "(?P<agent>.*?)"'
