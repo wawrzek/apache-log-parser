@@ -8,6 +8,16 @@ import re
 from optparse import OptionParser
 
 
+def _range(r1,r2):
+    """
+    This function returns a list of all the number between r1 and r2 arguments.
+    It is used to created a list of all HTTP response values ranges.
+    """
+    return list(range(r1,r2))
+
+
+
+
 #VARIABLES
 log_path = "/var/log/apache2/"
 apache_log = log_path + "access.log"
@@ -18,8 +28,8 @@ selected_type = 'responses'
 
 
 values = {
-'response_group': {"type" : "int", "name": "status_code", "elements": range(200,206) + range(300,307) + range(400,417) + range(500,505)},
-'responses' : {"type" : "int", "name": "status_code", "elements": range(200,206) + range(300,307) + range(400,417) + range(500,505)},
+'response_group': {"type" : "int", "name": "status_code", "elements": _range(200,206) + _range(300,307) + _range(400,417) + _range(500,505)},
+'responses' : {"type" : "int", "name": "status_code", "elements": _range(200,206) + _range(300,307) + _range(400,417) + _range(500,505)},
 'requests'  : {"type" : "str", "name": "request", "elements": ['GET', 'POST', 'OPTIONS', 'PATCH', 'PUT', 'HEAD', 'CONNECT', 'DELETE', 'TRACE']},
 }
 
