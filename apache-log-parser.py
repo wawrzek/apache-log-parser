@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os.path
-import sys 
+import sys
 from datetime import datetime, timedelta
 import time
 import re
@@ -56,11 +56,11 @@ elif t_resolution == 'day':
     time_step = timedelta(days=1)
     time_str = '%d/%b/%Y:00:00:00'
 else :
-    print "Wrong step"
+    print ("Wrong step")
     sys.exit(4)
 
 time_value = datetime.now() - time_step
-   
+
 if t_resolution == 'sec':
     time_string = datetime.strftime(time_value, '%d/%b/%Y:%H:%M:%S')
     time_output = datetime.strftime(time_value, '%H:%M:%S')
@@ -87,7 +87,7 @@ selected = values[selected_type]
 try:
     status = { r:0 for r in selected["elements"]}
 except KeyError:
-    print "Please specify values of %s you would like to graph (e.g. set of IPs)"%selected
+    print ("Please specify values of %s you would like to graph (e.g. set of IPs)"%selected)
 
 for line in matches :
     if line:
@@ -98,9 +98,9 @@ if selected_type == "response_group":
     groups = []
     for i in [2,3,4,5]:
         groups.append(str(sum([l[1] for l in status.iteritems() if str(l[0])[0]==[i]])))
-    print  time_output + ',' + ','.join(groups)
+    print  (time_output + ',' + ','.join(groups))
 
 else:
-    print time_output + ',' + ','.join(['%3d'%(status[r]) for r in selected["elements"]])
+    print (time_output + ',' + ','.join(['%3d'%(status[r]) for r in selected["elements"]]))
 #print str('%-11s'%'date') + ',' + ','.join([str(r) for r in values[selected_type]))
 
