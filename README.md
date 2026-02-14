@@ -1,4 +1,11 @@
-# apache_parser.py
+#New scripts
+
+The script to provides basic stats from Apache WebServer logs.
+
+It is reimplementation of older project.
+
+# Original Documentation
+## apache_parser.py
 
 This is a Python script and command-line tool,
 with no dependencies, that allows parsing data
@@ -14,7 +21,7 @@ At this time it supports generating supports for:
 * **subscriptions** - the number of feed subscribers per uri.
     This is done by parsing user agents for their subscriber count.
 
-## Usage
+### Usage
 
 Here are some example uses:
 
@@ -27,7 +34,7 @@ There is help available at the command-line as well.
     python parser.py --help
 
 
-## User agents successfully parsed for feed subscribers
+### User agents successfully parsed for feed subscribers
 
 These are the feeds that have been tested against
 the feed subscription system:
@@ -44,7 +51,7 @@ the feed subscription system:
     livedoor FeedFetcher/0.01 (http://reader.livedoor.com/; 1 subscriber)
 
 
-## Credits
+### Credits
 
 This script draws inspiration and code from:
 
